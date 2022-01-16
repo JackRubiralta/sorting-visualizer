@@ -1,6 +1,6 @@
 from time import sleep
 
-class Animation:
+class Animation: # make array a param
     def __init__(self, default_color, compare_color, swap_color, finished_color, pause_time ) -> None:
         self.default_color = default_color
         self.compare_color = compare_color
