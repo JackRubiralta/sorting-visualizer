@@ -1,4 +1,4 @@
-class BarAnimation {
+class Visualizer {
     defaultColor: string = 'blue';
     compareColor: string = 'green';
     finishedColor: string = 'purple';
@@ -20,7 +20,12 @@ class BarAnimation {
     }
 
     render(array: number[]): void {
-        (<div class="array-container"></div>)
+        let arrayContainer = document.getElementById('array');
+        let buffer: string = ""
+        for (var i = 0; i < array.length; i++) {
+            buffer += `<div class="array-bar" key=${i} style="background-color: ${this.defaultColor}; height: ${array[i]};"></div>`
+        }
+        arrayContainer.innerHTML = buffer;
     }
 
     // change the colors of 2 bars to the comparing color then pause and revert to the original color
