@@ -17,7 +17,7 @@ function selectionSort(array, visualizer) {
         // Find the minimum element in unsorted array 
         for (let j = i + 1; j < arrayLength; j++) { // loop through indexes of unsorted elements
     
-            visualizer.compare(i, j); // run the comparing visualizer
+            visualizer.compare(minIndex, j); // run the comparing visualizer
             if (array[minIndex] > array[j]) { // check if the element of minIndex is larger than value of the index j
                 minIndex = j; // set minIndex to j
             }
