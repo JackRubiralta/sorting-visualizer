@@ -1,14 +1,16 @@
 const defaultColor = 'rgba(66, 134, 244, 0.8)';
-const swapColor = 'rgba(219, 57, 57, 0.8)';
-const finishedColor = 'rgba(169, 92, 232, 0.8)';
+const pauseTime = 200;
 
-import {sleep, arrayBar} from './utils.js';
+function arrayBar(index) { return document.getElementsByClassName('array-bar')[index].style; }
 
-async function pause() { await sleep(300); }
+function renderArray(array) {
+    let buffer = "";
+    for (var i = 0; i < array.length; i++) { buffer += `<div class="array-bar" style="background-color: ${defaultColor}; height: ${array[i]}px"></div>`; }
+    document.getElementById('array').innerHTML = buffer;
+}
 
-/* Deprecated, replaced with new one 
-function setColor(index, color) { arrayBar(index).backgroundColor = color; }
-*/
+async function sleep(ms) { return new Promise(res => { setTimeout(() => res(), ms); }); }
+async function pause() { await sleep(pauseTime); }
 
 function setColor(...args) {
     let color = args.pop(-1);
@@ -24,32 +26,12 @@ function clearRange(start, stop) {
     }
 }
     
-
 /** Swaps elements of 2 indexes and pauses before and after swapping. */
 async function swap(index1, index2) {
     let bar1 = arrayBar(index1); let bar2 = arrayBar(index2);
     await pause();
     [bar1.height, bar1.backgroundColor, bar2.height, bar2.backgroundColor] = [bar2.height, bar2.backgroundColor, bar1.height, bar1.backgroundColor];
-    await pause();
+    await pause(); // can have without sometimes: do testing
 }
 
-function finished(index) {
-    setColor(index, finishedColor);
-}
-
-
-
-
-
-
-
-
-function renderArray(array) {
-    let buffer = "";
-    for (var i = 0; i < array.length; i++) {
-        buffer += `<div class="array-bar" style="background-color: ${defaultColor}; height: ${array[i]}px"></div>`;
-    }
-    document.getElementById('array').innerHTML = buffer;
-}
-
-export {renderArray, swap, finished, setColor, pause, clear, clearRange}
+export {renderArray, swap, setColor, pause, clear, clearRange}

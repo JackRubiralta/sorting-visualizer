@@ -1,4 +1,6 @@
 import * as visualizer from './visualizer.js';
+
+
 function generateArray(min, max, size, array) {
     array.length = 0;    
     for (let i = 0; i < size; i++) {
@@ -11,6 +13,7 @@ async function selectionSort(array) {
     // minIndexColor = 'rgba(219, 57, 57, 0.8)'
     // comparingColor = 'rgba(78, 216, 96, 0.8)'
     // swappingColor = 'rgba(219, 57, 57, 0.8)'
+    // finishedColor = 'rgba(169, 92, 232, 0.8)'
     let minIndex;
 
     for (let i = 0; i < array.length; i++) { 
@@ -40,13 +43,14 @@ async function selectionSort(array) {
         await visualizer.swap(minIndex, i); // swap the elements of minIndex and i
         [array[minIndex], array[i]] = [array[i], array[minIndex]];  
         await visualizer.clear(minIndex); // clear color at minIndex
-        await visualizer.finished(i);
+        await visualizer.setColor(i, 'rgba(169, 92, 232, 0.8)'); // set i to the finishedColor
     }
 }
 
 async function bubbleSort(array) {
     // comparingColor = 'rgba(78, 216, 96, 0.8)'
     // swappingColor = 'rgba(219, 57, 57, 0.8)'
+    // finishedColor = 'rgba(169, 92, 232, 0.8)'
 
     for (var i = 0; i < array.length; i++) {
         for (var j = 0; j < (array.length - i - 1); j++) {
@@ -65,19 +69,20 @@ async function bubbleSort(array) {
             } else { visualizer.clear(j) } // clear j
         }
 
-        await visualizer.finished(array.length - i - 1);
+        await visualizer.setColor(array.length - i - 1, 'rgba(169, 92, 232, 0.8)'); // set array.length - i - 1 to the finishedColor
     }
 }
 
-async function partition(array, low, high) { // maybe make hight = pivot
+async function partition(array, pivotIndex, high) { // maybe make hight = pivot
     // pivotColor = 'rgba(237, 234, 59, 0.8)'
-    // comparing color = 'rgba(78, 216, 96, 0.8)' or have it be swapping color 'rgba(219, 57, 57, 0.8)'
-    // swappingColor = maybe have swapping color dont know
+    // comparing color = 'rgba(78, 216, 96, 0.8)'
+    // swappingColor = 'rgba(219, 57, 57, 0.8)'
+    // finishedColor = 'rgba(169, 92, 232, 0.8)'
 
     // setting pivotIndex
-    await visualizer.setColor(low, 'rgba(237, 234, 59, 0.8)'); // set low to pivotColor
-    let pivotIndex = low;
-    let i = low; 
+    await visualizer.setColor(pivotIndex, 'rgba(237, 234, 59, 0.8)'); 
+    
+    let i = pivotIndex; // might want to be i + 1 bc visualgo is like that
 
     for (let j = pivotIndex + 1; j <= high; ++j) { 
         
@@ -98,31 +103,25 @@ async function partition(array, low, high) { // maybe make hight = pivot
     // swapping pivot and i
     await visualizer.swap(pivotIndex, i);
     [array[pivotIndex], array[i]] = [array[i], array[pivotIndex]];
-    await visualizer.finished(pivotIndex);
-    await visualizer.finished(i);
-    await visualizer.pause();
-    await visualizer.pause();
+    await visualizer.setColor(pivotIndex, 'rgba(169, 92, 232, 0.8)'); // set pivotIndex to the finishedColor
+    await visualizer.setColor(i, 'rgba(169, 92, 232, 0.8)'); // set i to the finishedColor
 
-    await visualizer.clearRange(pivotIndex + 1, i - 1);
-    await visualizer.clearRange(i + 1, high);
-
-    await visualizer.pause();
-    await visualizer.pause();
+    await visualizer.clearRange(pivotIndex + 1, i - 1); await visualizer.clearRange(i + 1, high);
     return i; 
 }
   
 async function quickSortRecursive(array, low, high) {
     if (low < high) {
-        let pivotIndex = await partition(array, low, high); 
-        await quickSortRecursive(array, low, pivotIndex - 1); 
-        await quickSortRecursive(array, pivotIndex + 1, high); 
+        let pivotIndex = await partition(array, low, high);
+        await Promise.all([
+            quickSortRecursive(array, low, pivotIndex - 1),
+            quickSortRecursive(array, pivotIndex + 1, high)
+        ]);
     }
 }
 
 async function quickSort(array) {
     await quickSortRecursive(array, 0, array.length - 1);
 }
-
-
 
 export {generateArray, selectionSort, bubbleSort, quickSort};
