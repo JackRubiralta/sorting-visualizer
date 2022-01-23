@@ -181,7 +181,6 @@ async function heapSort(array) {
         await visualizer.clear(0); await visualizer.setColor(i, 'rgba(169, 92, 232, 0.8)');
 		await heapify(array, i, 0);
 	}
-    await console.log(array);
 }
 
 export {generateArray, selectionSort, bubbleSort, quickSort, heapSort};
