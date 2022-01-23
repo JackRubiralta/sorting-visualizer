@@ -1,6 +1,7 @@
 import * as algorithms from './modules/algorithms.js';
 // add some of these sorts like: https://sortvisualizer.com/gnomesort/
 // add in-place merge sort but for the function thats replacing we use a implementation that is found in our insersion sort function (second for loop)
+// https://stackoverflow.com/questions/63967825/live-server-vscode-on-another-computer
 // but also think about adding merge sort like the one in visualgo
 // global variable
 var array = [16, 82, 33, 65, 92];
