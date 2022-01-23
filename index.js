@@ -1,5 +1,5 @@
 import * as algorithms from './modules/algorithms.js';
-
+// add some of these sorts like: https://sortvisualizer.com/gnomesort/
 // global variable
 var array = [16, 82, 33, 65, 92];
 
