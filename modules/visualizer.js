@@ -1,5 +1,5 @@
 const defaultColor = 'rgba(66, 134, 244, 0.8)';
-const pauseTime = 100;
+const pauseTime = 10;
 
 function arrayBar(index) { return document.getElementsByClassName('array-bar')[index].style; }
 

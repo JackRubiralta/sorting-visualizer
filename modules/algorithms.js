@@ -112,10 +112,12 @@ async function partition(array, low, high) { // maybe make hight = pivot
 async function quickSortRecursive(array, low, high) {
     if (low < high) {
         let pivotIndex = await partition(array, low, high);
-        await Promise.all([
+        /*await Promise.all([
             quickSortRecursive(array, low, pivotIndex - 1),
             quickSortRecursive(array, pivotIndex + 1, high)
-        ]);
+        ]);*/
+        await quickSortRecursive(array, low, pivotIndex - 1);
+        await quickSortRecursive(array, pivotIndex + 1, high);
     }
 }
 
@@ -211,7 +213,7 @@ async function insertionSort(array) {
 }
 
 
-function merge(array, low, mid, high) {
+async function merge(array, low, mid, high) {
     let start2 = mid + 1;
  
     if (array[mid] <= array[start2]) {
@@ -229,6 +231,7 @@ function merge(array, low, mid, high) {
             let index = start2;
         
             while (index != low) {
+                await visualizer.swap(index, index - 1);
                 [array[index], array[index - 1]] = [array[index - 1], array[index]];
                 index--;
             } 
@@ -241,17 +244,17 @@ function merge(array, low, mid, high) {
     }
 }
 
-function mergeSortRecursive(array, low, heigh) {
+async function mergeSortRecursive(array, low, heigh) {
     if (low < heigh) { 
         let mid = Math.floor((low + heigh) / 2);	
-        mergeSortRecursive(array, low, mid); 
-        mergeSortRecursive(array, mid + 1, heigh); 
-        merge(array, low, mid, heigh); 
+        await mergeSortRecursive(array, low, mid); 
+        await mergeSortRecursive(array, mid + 1, heigh); 
+        await merge(array, low, mid, heigh); 
     }
 }
 
-function mergeSort(array) {
-    mergeSortRecursive(array, 0, array.length - 1);
+async function mergeSort(array) {
+    await mergeSortRecursive(array, 0, array.length - 1);
 }
 
-export {generateArray, selectionSort, bubbleSort, quickSort, heapSort, insertionSort};
+export {generateArray, selectionSort, bubbleSort, quickSort, heapSort, insertionSort, mergeSort};
