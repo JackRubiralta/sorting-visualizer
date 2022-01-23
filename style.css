@@ -1,6 +1,6 @@
 .array-container {
-    position: static;
-    top: 120px;
+    position: relative;
+    top: 100px;
     text-align: center;
     /* --- display: flex; ---> */
 }
