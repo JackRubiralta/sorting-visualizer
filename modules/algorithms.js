@@ -124,4 +124,64 @@ async function quickSort(array) {
     await quickSortRecursive(array, 0, array.length - 1);
 }
 
-export {generateArray, selectionSort, bubbleSort, quickSort};
+async function heapify(array, n, i) {
+    // largest = 'rgba(219, 57, 57, 0.8)'
+    // comparingColor = 'rgba(78, 216, 96, 0.8)'
+    // swappingColor = 'rgba(219, 57, 57, 0.8)'
+    // finishedColor = 'rgba(169, 92, 232, 0.8)'
+
+    await visualizer.setColor(i, 'rgba(219, 57, 57, 0.8)');
+	let largest = i; 
+	let low = 2 * i + 1;
+	let high = 2 * i + 2;
+
+    if (low < n) {
+    await visualizer.setColor(low, 'rgba(78, 216, 96, 0.8)');
+    await visualizer.pause();
+	if (array[low] > array[largest]) {
+
+        await visualizer.clear(largest);
+        await visualizer.setColor(low, 'rgba(219, 57, 57, 0.8)');
+		largest = low;
+	} else { visualizer.clear(low); }
+    }
+
+    if (high < n) {
+    await visualizer.setColor(high, 'rgba(78, 216, 96, 0.8)');
+    await visualizer.pause();
+	if (array[high] > array[largest]) {
+
+        await visualizer.clear(largest);
+        await visualizer.setColor(high, 'rgba(219, 57, 57, 0.8)');
+		largest = high;
+	} else { visualizer.clear(high); }
+    }
+
+	if (largest != i) {
+        await visualizer.setColor(i, 'rgba(219, 57, 57, 0.8)');
+        await visualizer.swap(i, largest);
+		[array[i], array[largest]] = [array[largest], array[i]];
+        await visualizer.clear(i, largest);
+		await heapify(array, n, largest);
+	} else { await visualizer.clear(i, largest); }
+    
+}
+
+async function heapSort(array) {
+	let n = array.length;
+
+	for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+		await heapify(array, n, i);
+	}
+
+	for (let i = n - 1; i > 0; i--) {
+        await visualizer.setColor(0, i, 'rgba(219, 57, 57, 0.8)');
+        await visualizer.swap(0, i);
+		[array[i], array[0]] = [array[0], array[i]];
+        await visualizer.clear(0); await visualizer.setColor(i, 'rgba(169, 92, 232, 0.8)');
+		await heapify(array, i, 0);
+	}
+    await console.log(array);
+}
+
+export {generateArray, selectionSort, bubbleSort, quickSort, heapSort};
