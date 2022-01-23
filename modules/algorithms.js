@@ -175,10 +175,11 @@ async function heapSort(array) {
 	}
 
 	for (let i = n - 1; i > 0; i--) {
-        await visualizer.setColor(0, i, 'rgba(219, 57, 57, 0.8)');
-        await visualizer.swap(0, i);
+		await visualizer.setColor(0, i, 'rgba(219, 57, 57, 0.8)');
+		await visualizer.swap(0, i);
+		await visualizer.clear(0); await visualizer.setColor(i, 'rgba(169, 92, 232, 0.8)');
 		[array[i], array[0]] = [array[0], array[i]];
-        await visualizer.clear(0); await visualizer.setColor(i, 'rgba(169, 92, 232, 0.8)');
+		
 		await heapify(array, i, 0);
 	}
 }
