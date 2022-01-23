@@ -1,8 +1,8 @@
 .array-container {
-    position: absolute;
+    position: static;
     top: 100px;
     text-align: center;
-    <! --- display: flex; --->
+    /* --- display: flex; ---> */
 }
 
 .array-bar {
