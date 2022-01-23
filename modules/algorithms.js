@@ -73,23 +73,24 @@ async function bubbleSort(array) {
     }
 }
 
-async function partition(array, pivotIndex, high) { // maybe make hight = pivot
+async function partition(array, low, high) { // maybe make hight = pivot
     // pivotColor = 'rgba(237, 234, 59, 0.8)'
     // comparing color = 'rgba(78, 216, 96, 0.8)'
     // swappingColor = 'rgba(219, 57, 57, 0.8)'
     // finishedColor = 'rgba(169, 92, 232, 0.8)'
 
-    // setting pivotIndex
-    await visualizer.setColor(pivotIndex, 'rgba(237, 234, 59, 0.8)'); 
+    // setting pivot
+    await visualizer.setColor(low, 'rgba(237, 234, 59, 0.8)'); 
+    let pivot = array[low];
     
-    let i = pivotIndex; // might want to be i + 1 bc visualgo is like that
+    let i = low; // might want to be i + 1 bc visualgo is like that
 
-    for (let j = pivotIndex + 1; j <= high; ++j) { 
+    for (let j = low + 1; j <= high; ++j) { 
         
-        // comparing j and pivotIndex
+        // comparing j and pivot
         await visualizer.setColor(j, 'rgba(78, 216, 96, 0.8)');
         await visualizer.pause(); // comparing pause  
-        if (array[j] < array[pivotIndex])  { 
+        if (array[j] < pivot)  { 
             i = i + 1;
 
             // swapping j and i
@@ -101,12 +102,11 @@ async function partition(array, pivotIndex, high) { // maybe make hight = pivot
     }
     
     // swapping pivot and i
-    await visualizer.swap(pivotIndex, i);
-    [array[pivotIndex], array[i]] = [array[i], array[pivotIndex]];
-    await visualizer.setColor(pivotIndex, 'rgba(169, 92, 232, 0.8)'); // set pivotIndex to the finishedColor
+    await visualizer.swap(low, i);
+    [array[low], array[i]] = [array[i], array[low]];
     await visualizer.setColor(i, 'rgba(169, 92, 232, 0.8)'); // set i to the finishedColor
 
-    await visualizer.clearRange(pivotIndex + 1, i - 1); await visualizer.clearRange(i + 1, high);
+    await visualizer.clearRange(low, i - 1); await visualizer.clearRange(i + 1, high);
     return i; 
 }
   
