@@ -11,9 +11,10 @@ async function timer(algorithm) {
     document.getElementById('timer').innerHTML = `Run Time: ${duration / 1000}`;
 }
 
-document.getElementById('reset-array-button').onclick = () => {algorithms.generateArray(40, 140, 100, array)};
+document.getElementById('reset-array-button').onclick = () => {algorithms.generateArray(40, 140, 25, array)};
 document.getElementById('selection-sort-button').onclick = () => {timer(algorithms.selectionSort)};
 document.getElementById('bubble-sort-button').onclick = () => {timer(algorithms.bubbleSort)};
 document.getElementById('quick-sort-button').onclick = () => { timer(algorithms.quickSort) };
 document.getElementById('heap-sort-button').onclick = () => { timer(algorithms.heapSort) };
+document.getElementById('insertion-sort-button').onclick = () => { timer(algorithms.insertionSort) };
 

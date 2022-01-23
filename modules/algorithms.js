@@ -1,6 +1,5 @@
 import * as visualizer from './visualizer.js';
 
-
 function generateArray(min, max, size, array) {
     array.length = 0;    
     for (let i = 0; i < size; i++) {
@@ -184,4 +183,31 @@ async function heapSort(array) {
 	}
 }
 
-export {generateArray, selectionSort, bubbleSort, quickSort, heapSort};
+
+async function insertionSort(array) { 
+    for (let i = 1; i < array.length; i++) {
+
+        await visualizer.setColor(i, 'rgba(219, 57, 57, 0.8)');
+        let j = i;
+        
+        while (j > 0) {
+
+
+            await visualizer.setColor(j - 1, 'rgba(78, 216, 96, 0.8)'); // set to compareColor
+            await visualizer.pause();
+            if (array[j] > array[j - 1]) {
+                visualizer.clear(j - 1);
+                break;
+            }
+
+            await visualizer.setColor(j - 1, 'rgba(219, 57, 57, 0.8)');
+            await visualizer.swap(j, j - 1);
+            [array[j], array[j - 1]] = [array[j - 1], array[j]];
+            await visualizer.clear(j);
+            j--;
+        } 
+        visualizer.clear(j);
+    }
+}
+
+export {generateArray, selectionSort, bubbleSort, quickSort, heapSort, insertionSort};
