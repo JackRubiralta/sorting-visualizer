@@ -210,4 +210,48 @@ async function insertionSort(array) {
     }
 }
 
+
+function merge(array, low, mid, high) {
+    let start2 = mid + 1;
+ 
+    if (array[mid] <= array[start2]) {
+        return;
+    }
+ 
+    while (low <= mid && start2 <= high) {
+         
+        if (array[low] <= array[start2]) {
+            low++;
+        } else {
+
+            
+            
+            let index = start2;
+        
+            while (index != low) {
+                [array[index], array[index - 1]] = [array[index - 1], array[index]];
+                index--;
+            } 
+ 
+            
+            low++;
+            mid++;
+            start2++;
+        }
+    }
+}
+
+function mergeSortRecursive(array, low, heigh) {
+    if (low < heigh) { 
+        let mid = Math.floor((low + heigh) / 2);	
+        mergeSortRecursive(array, low, mid); 
+        mergeSortRecursive(array, mid + 1, heigh); 
+        merge(array, low, mid, heigh); 
+    }
+}
+
+function mergeSort(array) {
+    mergeSortRecursive(array, 0, array.length - 1);
+}
+
 export {generateArray, selectionSort, bubbleSort, quickSort, heapSort, insertionSort};
