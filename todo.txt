@@ -1,0 +1,7 @@
+// make clear be clearBarColor
+// make code better
+
+
+later:
+// make swap pauses not in swap
+// if i dont need await then dont use (only for pauses) 

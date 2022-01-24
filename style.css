@@ -1,6 +1,17 @@
 .array-container {
-    position: relative;
-    top: 100px;
+    top: 130px;
+    left: 50px;
+    position: fixed;
+    
+    text-align: center;
+    /* --- display: flex; ---> */
+}
+.buffer-container {
+    bottom: 185px;
+    left: 50px;
+
+    position: fixed;
+    
     text-align: center;
     /* --- display: flex; ---> */
 }

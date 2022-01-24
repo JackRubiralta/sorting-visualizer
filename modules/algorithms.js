@@ -212,36 +212,85 @@ async function insertionSort(array) {
     }
 }
 
+/*
+when transtalting from array to buffer animation
+await visualizer.buffer.createBar(low + bufferIndex, array[index], 'rgba(219, 57, 57, 0.8)');
+await visualizer.pause();
+await visualizer.buffer.clearBarColor(low + bufferIndex);
+await visualizer.clear(index);
+
+*/
+visualizer.buffer.clearBarColor
 
 async function merge(array, low, mid, high) {
-    let start2 = mid + 1;
- 
-    if (array[mid] <= array[start2]) {
-        return;
-    }
- 
-    while (low <= mid && start2 <= high) {
-         
-        if (array[low] <= array[start2]) {
-            low++;
-        } else {
+    let buffer = [];
+    buffer.length = high - low + 1;; 
 
+    let left = low
+    let right = mid + 1;
+    let bufferIndex = 0;
+    await visualizer.setColor(left, right, 'rgba(78, 216, 96, 0.8)');
+
+    while (true) { // the merging
+
+        await visualizer.pause(); // pause for animation
+        if (array[left] <= array[right]) {
+            await visualizer.setColor(left, 'rgba(219, 57, 57, 0.8)');
+            await visualizer.buffer.createBar(low + bufferIndex, array[left], 'rgba(219, 57, 57, 0.8)');
+            await visualizer.pause();
+            buffer[bufferIndex] = array[left];
+            await visualizer.buffer.clearBarColor(low + bufferIndex);
+            await visualizer.clear(left);
+
+            left++; if (!(left <= mid)) { await visualizer.clear(right); break; }
+            await visualizer.setColor(left, 'rgba(78, 216, 96, 0.8)'); // for compare animation
             
-            
-            let index = start2;
-        
-            while (index != low) {
-                await visualizer.swap(index, index - 1);
-                [array[index], array[index - 1]] = [array[index - 1], array[index]];
-                index--;
-            } 
- 
-            
-            low++;
-            mid++;
-            start2++;
-        }
+        } else {
+            await visualizer.setColor(right, 'rgba(219, 57, 57, 0.8)');
+            await visualizer.buffer.createBar(low + bufferIndex, array[right], 'rgba(219, 57, 57, 0.8)');
+            await visualizer.pause();
+            buffer[bufferIndex] = array[right]; 
+            await visualizer.buffer.clearBarColor(low + bufferIndex);
+            await visualizer.clear(right);
+
+            right++; if (!(right <= high)) { await visualizer.clear(left); break; }
+            await visualizer.setColor(right, 'rgba(78, 216, 96, 0.8)');
+        } 
+        bufferIndex++;     
     }
+    bufferIndex++;
+
+
+    while (left <= mid) { // leftover, if any
+        await visualizer.setColor(left, 'rgba(219, 57, 57, 0.8)');
+        await visualizer.buffer.createBar(low + bufferIndex, array[left], 'rgba(219, 57, 57, 0.8)');
+        await visualizer.pause();
+        buffer[bufferIndex] = array[left];
+        await visualizer.buffer.clearBarColor(low + bufferIndex);
+        await visualizer.clear(left);
+
+        left++; bufferIndex++;
+    } 
+    // make for loops for bufferIndex
+    while (right <= high) { // leftover, if any
+        await visualizer.setColor(right, 'rgba(219, 57, 57, 0.8)');
+        await visualizer.buffer.createBar(low + bufferIndex, array[right], 'rgba(219, 57, 57, 0.8)');
+        buffer[bufferIndex] = array[right];
+        await visualizer.buffer.clearBarColor(low + bufferIndex);
+        await visualizer.clear(right);
+        right++; bufferIndex++;
+    }
+    
+    for (let k = 0; k < high - low + 1; k++) { // copy back
+        await visualizer.buffer.setBarColor(low + k, 'rgba(219, 57, 57, 0.8)');
+        await visualizer.setColor(low + k, 'rgba(219, 57, 57, 0.8)');
+        array[low + k] = buffer[k];
+        await visualizer.pause();
+        await visualizer.setHeight(low + k, buffer[k]);
+        visualizer.clear(low + k);
+        await visualizer.buffer.deleteBar(low + k);
+        
+    }    
 }
 
 async function mergeSortRecursive(array, low, heigh) {
@@ -256,5 +305,6 @@ async function mergeSortRecursive(array, low, heigh) {
 async function mergeSort(array) {
     await mergeSortRecursive(array, 0, array.length - 1);
 }
+
 
 export {generateArray, selectionSort, bubbleSort, quickSort, heapSort, insertionSort, mergeSort};
