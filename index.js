@@ -1,23 +1,23 @@
-import * as algorithms from './modules/algorithms.js';
-// add some of these sorts like: https://sortvisualizer.com/gnomesort/
-// add in-place merge sort but for the function thats replacing we use a implementation that is found in our insersion sort function (second for loop)
-// but also think about adding merge sort like the one in visualgo
-// global variable
-var array = [16, 82, 33, 65, 92];
+import { pause, arrayVisual, bufferVisual } from './modules/visualizer.js';
+import * as algorithms from './algorithms.js';
 
-async function timer(algorithm) {
-    document.getElementById('timer').innerHTML = 'Timing...';
-    const start = performance.now();
-    await algorithm(array);
-    const duration = performance.now() - start;
-    document.getElementById('timer').innerHTML = `Run Time: ${duration / 1000}`;
+var array;
+
+function resetArray(size) {
+    array = Array.from({length: size}, () => Math.floor(Math.random() * (180 - 50) ) + 50);
+    arrayVisual.render(array); bufferVisual.render(size);
 }
 
-document.getElementById('reset-array-button').onclick = () => {algorithms.generateArray(40, 140, 90, array)};
-document.getElementById('selection-sort-button').onclick = () => {timer(algorithms.selectionSort)};
-document.getElementById('bubble-sort-button').onclick = () => {timer(algorithms.bubbleSort)};
-document.getElementById('quick-sort-button').onclick = () => { timer(algorithms.quickSort) };
-document.getElementById('heap-sort-button').onclick = () => { timer(algorithms.heapSort) };
-document.getElementById('insertion-sort-button').onclick = () => { timer(algorithms.insertionSort) };
-document.getElementById('merge-sort-button').onclick = () => { timer(algorithms.mergeSort) };
+document.getElementById('pause-time-slider').oninput = function() { pause.pauseTime = this.value; }; pause.pauseTime = 100;
 
+document.getElementById('reset-array-button').onclick = () => resetArray(document.getElementById('array-size-slider').value);
+document.getElementById('array-size-slider').oninput = function() { resetArray(this.value) };
+
+
+// Sorting Algorithms
+document.getElementById('selection-sort-button').onclick = () => algorithms.selectionSort(array);
+document.getElementById('bubble-sort-button').onclick = () => algorithms.bubbleSort(array);
+document.getElementById('quick-sort-button').onclick = () => algorithms.quickSort(array);
+document.getElementById('heap-sort-button').onclick = () => algorithms.heapSort(array);
+document.getElementById('insertion-sort-button').onclick = () => algorithms.insertionSort(array);
+document.getElementById('merge-sort-button').onclick = () => algorithms.mergeSort(array);

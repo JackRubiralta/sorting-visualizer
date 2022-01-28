@@ -1,18 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang='en'>
     <head>
         <meta charset="utf-8">
         <title>Sorting Visualizer</title>
         <link rel="stylesheet" href="style.css">
-        
-        <script src='./modules/visualizer.js'></script>
-        <script src='./modules/algorithms.js'></script>        
+        <script src='./modules/visualizer.js' type="module"></script>
+        <script src='./algorithms.js' type="module"></script>        
         <script type='module' src='./index.js'></script>
     </head>
     <body>
-        <div id='timer'>Run Time: NaN</div>
-
+        <input type='range' min='10' max='700' value='150' class='slider' id='pause-time-slider'>
+        <input type='range' min='10' max='90' value='90' step='10' class='slider' id='array-size-slider'>
+        
         <button id='reset-array-button'>Generate New Array</button>
+
+        <!-- Sorting Algorithm Buttons -->
         <button id='selection-sort-button'>Selection Sort</button>
         <button id='bubble-sort-button'>Bubble Sort</button>
         <button id='quick-sort-button'>Quick Sort</button>
@@ -20,9 +22,9 @@
         <button id='insertion-sort-button'>Insertion Sort</button>
         <button id='merge-sort-button'>Merge Sort</button>
 
-
-        <div class='array-container' id="array">Array is contained here!</div>
-        <div class='buffer-container' id="buffer">Buffer is contained here!</div> <!-- Used For Merge Sort -->
+        <!-- Array and Buffer Containers -->
+        <div class='container' id='array'>Hello</div>
+        <div class='container' id='buffer'></div>
         
     </body> 
 </html>
