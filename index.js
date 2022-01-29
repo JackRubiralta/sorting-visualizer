@@ -4,11 +4,11 @@ import * as algorithms from './algorithms.js';
 var array;
 
 function resetArray(size) {
-    array = Array.from({length: size}, () => Math.floor(Math.random() * (180 - 50) ) + 50);
+    array = Array.from({length: size}, () => Math.floor(Math.random() * (250 - 50) ) + 50);
     arrayVisual.render(array); bufferVisual.render(size);
 }
 
-document.getElementById('pause-time-slider').oninput = function() { pause.pauseTime = this.value; }; pause.pauseTime = 100;
+document.getElementById('pause-time-slider').oninput = function() { pause.setPauseTime(this.value) }; pause.setPauseTime(100);
 
 document.getElementById('reset-array-button').onclick = () => resetArray(document.getElementById('array-size-slider').value);
 document.getElementById('array-size-slider').oninput = function() { resetArray(this.value) };

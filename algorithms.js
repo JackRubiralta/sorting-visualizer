@@ -268,9 +268,12 @@ async function merge(array, low, mid, high) {
     for (let k = 0; k < high - low + 1; k++) { 
         bufferVisual.setColor(low + k, colors.primaryColor);
         arrayVisual.setColor(low + k, colors.primaryColor);
+        arrayVisual.setHeight(low + k, buffer[k]);
         array[low + k] = buffer[k];
         await pause();
-        arrayVisual.setHeight(low + k, buffer[k]);
+        
+
+        
         arrayVisual.revertColor(low + k);
         bufferVisual.deleteBar(low + k);
     }    

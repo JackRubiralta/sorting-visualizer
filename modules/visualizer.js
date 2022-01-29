@@ -1,7 +1,7 @@
 // singleton patterns used here
 // IDEA MAKE THIS A DEFAULT EXPORT
-// and have visualizer.buffer.setColor(i, colors.defaultColor) and visualizer.array.setColor
-// visualizer.render(array)
+// and have visual.buffer.setColor(i, colors.defaultColor) and visual.array.setColor
+// visual.render(array)
 
 const colors = {
     defaultColor: 'CornflowerBlue', 
@@ -124,6 +124,15 @@ const bufferVisual = {
  */
 async function pause() {
     return new Promise(res => { setTimeout(() => res(), pause.pauseTime); });
+}
+
+pause.setPauseTime = (ms) => {
+    pause.pauseTime = ms;
+    let rules = document.styleSheets[0].cssRules; 
+    
+    rules[1].style.transitionDuration = `${ms}ms`;
+    
+    //(`.bar { transition-duration: ${ms*10}ms; }`, 0);
 }
 
 export {arrayVisual, bufferVisual, colors, pause}
