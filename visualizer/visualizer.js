@@ -31,7 +31,7 @@ const arrayVisual = {
     render(array) {
         let arrayBars = '';
         for (let i = 0; i < array.length; i++) {
-            arrayBars += `<div class='bar' style='background-color: ${colors.defaultColor}; height: ${array[i]}px; width: ${calculateWidth(array.length)}px; margin: 0 ${calculateMargin(array.length)}px'></div>`;
+            arrayBars += `<div class='bar' style='background-color: ${colors.defaultColor}; height: ${array[i]}%; width: ${calculateWidth(array.length)}px; margin: 0 ${calculateMargin(array.length)}px'></div>`;
         }
         document.getElementById('array').innerHTML = arrayBars;
     },
@@ -68,7 +68,7 @@ const arrayVisual = {
      * @param {number} height - The new height of the bar.
      */
     setHeight(index, height) {
-        document.getElementById('array').querySelectorAll('.bar')[index].style.height = `${height}px`;
+        document.getElementById('array').querySelectorAll('.bar')[index].style.height = `${height}%`;
     },
 
 
@@ -102,7 +102,7 @@ const bufferVisual = {
     },
 
     setHeight(index, height) {
-        document.getElementById('buffer').querySelectorAll('.bar')[index].style.height = `${height}px`;
+        document.getElementById('buffer').querySelectorAll('.bar')[index].style.height = `${height}%`;
     },
 
     revertColor(index) {
