@@ -1,4 +1,4 @@
-import {arrayVisual, bufferVisual, colors, pause} from './modules/visualizer.js';
+import {arrayVisual, bufferVisual, colors, pause} from './visualizer/visualizer.js';
 
 async function selectionSort(array) {
     let minIndex;

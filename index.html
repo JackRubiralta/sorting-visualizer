@@ -4,27 +4,47 @@
         <meta charset="utf-8">
         <title>Sorting Visualizer</title>
         <link rel="stylesheet" href="style.css">
-        <script src='./modules/visualizer.js' type="module"></script>
+        <link rel="stylesheet" href="toolbar/toolbar.css">
+        <link rel="stylesheet" href="visualizer/visualizer.css">
+
+        <script src='./visualizer/visualizer.js' type="module"></script>
         <script src='./algorithms.js' type="module"></script>        
+        
         <script type='module' src='./index.js'></script>
     </head>
+
     <body>
-        <input type='range' min='20' max='700' value='150' class='slider' id='pause-time-slider'>
-        <input type='range' min='10' max='90' value='90' step='5' class='slider' id='array-size-slider'>
-        
-        <button id='reset-array-button'>Generate New Array</button>
-
-        <!-- Sorting Algorithm Buttons -->
-        <button id='selection-sort-button'>Selection Sort</button>
-        <button id='bubble-sort-button'>Bubble Sort</button>
-        <button id='quick-sort-button'>Quick Sort</button>
-        <button id='heap-sort-button'>Heap Sort</button>
-        <button id='insertion-sort-button'>Insertion Sort</button>
-        <button id='merge-sort-button'>Merge Sort</button>
-
-        <!-- Array and Buffer Containers -->
-        <div class='container' id='array'>Hello</div>
-        <div class='container' id='buffer'></div>
-        
+        <body>
+            <div class='tool-bar'> 
+                <!-- Sliders: Length and Speed -->
+                <div class='slider-container'>
+                    <div>Length</div>
+                    <input type='range' min='10' max='90' value='90' step='5' id='array-size-slider'>
+                </div>
+    
+                <div class='slider-container'>
+                    <div>Speed</div>
+                    <input type='range' min='5' max='700' value='150' class='slider' id='pause-time-slider'>
+                </div>
+                
+                <div class='separator'></div>
+    
+                <button id='reset-array-button'>Generate New Array</button>
+    
+                <div class='separator'></div>
+    
+                <!-- Sorting Algorithm Buttons -->
+                <button id='selection-sort-button'>Selection Sort</button>
+                <button id='bubble-sort-button'>Bubble Sort</button>
+                <button id='quick-sort-button'>Quick Sort</button>
+                <button id='heap-sort-button'>Heap Sort</button>
+                <button id='insertion-sort-button'>Insertion Sort</button>           
+                <button id='merge-sort-button'>Merge Sort</button>
+            </div> 
+    
+            <!-- Array and Buffer Containers -->
+            <div class='container' id='array'>Hello</div>
+            <div class='container' id='buffer'></div>
+            
     </body> 
 </html>

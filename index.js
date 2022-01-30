@@ -1,4 +1,4 @@
-import { pause, arrayVisual, bufferVisual } from './modules/visualizer.js';
+import { pause, arrayVisual, bufferVisual } from './visualizer/visualizer.js';
 import * as algorithms from './algorithms.js';
 
 var array;

@@ -1,16 +1,5 @@
-.container {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: 100%; height: 250px;
-    margin-top: 15px;
-}
 
-.bar {
-    /* do percent for array heights bc better */
-    display: inline-block;
-    transition-duration: 100ms;
-    transition-property: height;
-    transition-timing-function: ease-in;
+
+body {
+    margin: 0px;
 }
