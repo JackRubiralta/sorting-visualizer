@@ -4,7 +4,7 @@ import * as algorithms from './algorithms.js';
 var array;
 
 function resetArray(size) {
-    array = Array.from({length: size}, () => Math.floor(Math.random() * (250 - 50) ) + 50);
+    array = Array.from({length: size}, () => Math.floor(Math.random() * (100 - 20) ) + 20);
     arrayVisual.render(array); bufferVisual.render(size);
 }
 
