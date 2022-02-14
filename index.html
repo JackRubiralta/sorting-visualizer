@@ -5,31 +5,37 @@
         <title>Sorting Visualizer</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="toolbar/toolbar.css">
-        <link rel="stylesheet" href="visualizer/visualizer.css">
 
-        <script src='./visualizer/visualizer.js' type="module"></script>
-        <script src='./algorithms.js' type="module"></script>        
-        
+
+
+        <link rel='stylesheet' href='./arrayVisual/arrayVisual.css'>
+        <script type='module' src='./arrayVisual/arrayVisual.js'></script>
+
+
+        <script type='module' src='./visualizer.js'></script>  
+
         <script type='module' src='./index.js'></script>
     </head>
 
     <body>
         <body>
             <div class='tool-bar'> 
-                <!-- Sliders: Length and Speed -->
+
+                <!-- Array Length Slider -->
                 <div class='slider-container'>
                     <div>Length</div>
-                    <input type='range' min='10' max='90' value='90' step='5' id='array-size-slider'>
+                    <input type='range' min='10' max='90' value='30' step='5' id='array-length-slider'>
                 </div>
     
+                <!-- Pause Time Slider -->
                 <div class='slider-container'>
                     <div>Speed</div>
-                    <input type='range' min='5' max='700' value='150' class='slider' id='pause-time-slider'>
+                    <input type='range' min='5' max='1200' value='50' class='slider' id='pause-time-slider'>
                 </div>
                 
                 <div class='separator'></div>
     
-                <button id='reset-array-button'>Generate New Array</button>
+                <button id='generate-array-button'>Generate New Array</button>
     
                 <div class='separator'></div>
     
@@ -41,10 +47,13 @@
                 <button id='insertion-sort-button'>Insertion Sort</button>           
                 <button id='merge-sort-button'>Merge Sort</button>
             </div> 
-    
-            <!-- Array and Buffer Containers -->
-            <div class='container' id='array'>Hello</div>
-            <div class='container' id='buffer'></div>
+            
+
+
+            <div id='array-visual'>
+                <div class='bar-container' id='array-bars'>array-bars</div>
+                <div class='bar-container' id='auxiliary-bars'>auxiliary-bars</div>
+            </div>
             
     </body> 
 </html>

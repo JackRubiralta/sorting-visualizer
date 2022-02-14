@@ -1,0 +1,26 @@
+.bar-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%; height: 250px;
+}
+
+/* Buffer and Array Containers */
+#array-bars.bar-container { position: relative; top: 15px; }
+#auxiliary-bars.bar-container { position: relative; top: 15px; }
+
+.bar {
+    display: inline-block;
+}
+
+.bar.default { background-color: cornflowerblue; }
+.bar.auxiliary { background-color: silver; } /* could also have #auxiliary.bar.default instead */
+.bar.hidden { background-color: transparent; height: 0; }
+
+.bar.primary { background-color: indianred; }
+.bar.secondary { background-color: lightgreen; }
+.bar.pivot { background-color: khaki; }
+.bar.larger { background-color: turquoise; }
+.bar.smaller { background-color: pink; }
+.bar.finished { background-color: mediumorchid; }
+
