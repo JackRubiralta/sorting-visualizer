@@ -4,29 +4,34 @@
         <meta charset="utf-8">
         <title>Sorting Visualizer</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="toolbar/toolbar.css">
+
+        <!-- ToolBar Files Imports -->
+        <link rel='stylesheet' href='toolbar/toolbar.css'>
+        <script type='module' src='./toolbar/toolbar.js'></script>
 
 
 
-        <link rel='stylesheet' href='./arrayVisual/arrayVisual.css'>
-        <script type='module' src='./arrayVisual/arrayVisual.js'></script>
+        <link rel='stylesheet' href='./visualizer/arrayVisual.css'>
+        <script type='module' src='./visualizer/arrayVisual.js'></script>
 
 
-        <script type='module' src='./visualizer.js'></script>  
+        <script type='module' src='/visualizer/visualizer.js'></script>  
 
+        <!-- Entry Point File -->
         <script type='module' src='./index.js'></script>
     </head>
 
     <body>
         <body>
-            <div class='tool-bar'> 
-
+            <div id='toolbar'> 
                 <!-- Array Length Slider -->
                 <div class='slider-container'>
                     <div>Length</div>
                     <input type='range' min='10' max='90' value='30' step='5' id='array-length-slider'>
                 </div>
-    
+
+                <div class='separator'></div>
+
                 <!-- Pause Time Slider -->
                 <div class='slider-container'>
                     <div>Speed</div>
@@ -38,14 +43,43 @@
                 <button id='generate-array-button'>Generate New Array</button>
     
                 <div class='separator'></div>
-    
-                <!-- Sorting Algorithm Buttons -->
-                <button id='selection-sort-button'>Selection Sort</button>
-                <button id='bubble-sort-button'>Bubble Sort</button>
-                <button id='quick-sort-button'>Quick Sort</button>
-                <button id='heap-sort-button'>Heap Sort</button>
-                <button id='insertion-sort-button'>Insertion Sort</button>           
-                <button id='merge-sort-button'>Merge Sort</button>
+                
+                <div>
+                    <div class='radio-container'>
+                        <input type='radio' id='bubble-sort-radio' value='bubbleSort' name='sorting-algorithm'/>
+                        <label for='bubble-sort-radio'>Bubble Sort</label>
+                    </div>
+
+                    <div class='radio-container'>
+                        <input type='radio' id='insertion-sort-radio' value='insertionSort' name='sorting-algorithm'/>
+                        <label for='insertion-sort-radio'>Insertion Sort</label>
+                    </div>
+
+                    <div class='radio-container'>
+                        <input type='radio' id='selection-sort-radio' value='selectionSort' name='sorting-algorithm'/>
+                        <label for='selection-sort-radio'>Selection Sort</label>
+                    </div>
+
+                    <div class='radio-container'>
+                        <input type='radio' id='quick-sort-radio' value='quickSort' name='sorting-algorithm'/>
+                        <label for='quick-sort-radio'>Quick Sort</label>
+                    </div>
+
+                    <div class='radio-container'>
+                        <input type='radio' id='merge-sort-radio' value='mergeSort' name='sorting-algorithm'/>
+                        <label for='merge-sort-radio'>Merge Sort</label>
+                    </div>
+
+                    <div class='radio-container'>
+                        <input type='radio' id='heap-sort-radio' value='heapSort' name='sorting-algorithm'/>
+                        <label for='heap-sort-radio'>Heap Sort</label>
+                    </div>
+                </div>
+
+                <div class='separator'></div>
+
+                <button id='sort-button'>SORT</button>
+
             </div> 
             
 

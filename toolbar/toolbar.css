@@ -1,4 +1,4 @@
-.tool-bar { 
+#toolbar { 
     overflow: hidden;
 	margin: 0; 
 	padding: 12px; 
@@ -9,7 +9,7 @@
  
 
 /* Button */
-.tool-bar button {  
+#toolbar button {  
     display: inline;
     margin-left: 5px; margin-right: 5px;
     padding: 5px 5px;
@@ -21,31 +21,65 @@
 }
 
 
+#toolbar button:disabled {  
+    background-color:rgb(196, 31, 31);
+}
+
 /* Slider */
-.tool-bar .slider-container {   
+#toolbar .slider-container {   
     display: inline-block;
     margin-left: 7px; margin-right: 7px;
     text-align: center;
 }
 
-.tool-bar .slider-container input {
+#toolbar .slider-container input {
     appearance: none;
     height: 7px;
     background: white;
 }
 
-.tool-bar .slider-container div {
+#toolbar .slider-container div {
     font-family: monospace;
     color: white;
 }
 
 
 /* Separator */
-.tool-bar .separator {   
+#toolbar .separator {   
     display: inline-block;
     margin-left: 7px; margin-right: 7px;
     height: 50px;
     width: 7px;
     background-color: rgb(16, 53, 167);
 }
+
+
+#toolbar .radio-container {
+    display: inline-block;
+    margin-left: 5px; margin-right: 5px;
+    text-align: center;
+}
+
+#toolbar .radio-container label {
+    display: inline;
+    padding: 5px 5px;
+    background-color:royalblue;
+    border: none;
+    text-align: center;
+    font-family: monospace;
+    color: white; 
+}
+
+#toolbar input[type='radio'] {
+    display: none;
+    position: absolute;
+    width: 0%;
+    appearance: none;
+}
+
+#toolbar input[type='radio']:checked + label {
+    background:mediumorchid;
+}
+
+/*ADD POINTER: CURSOR stuff*/
 
