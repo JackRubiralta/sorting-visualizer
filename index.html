@@ -1,21 +1,20 @@
 <!doctype html>
 <html lang='en'>
     <head>
-        <meta charset="utf-8">
+        <meta charset='utf-8'>
         <title>Sorting Visualizer</title>
-        <link rel="stylesheet" href="style.css">
+
+        <!-- Main Style Sheet (for body) -->
+        <link rel='stylesheet' href='style.css'>
 
         <!-- ToolBar Files Imports -->
-        <link rel='stylesheet' href='toolbar/toolbar.css'>
+        <link rel='stylesheet' href='./toolbar/toolbar.css'>
         <script type='module' src='./toolbar/toolbar.js'></script>
 
-
-
-        <link rel='stylesheet' href='./visualizer/arrayVisual.css'>
-        <script type='module' src='./visualizer/arrayVisual.js'></script>
-
-
-        <script type='module' src='/visualizer/visualizer.js'></script>  
+        <!-- Visualizer Visuals Imports -->
+        <link rel='stylesheet' href='./visualizer/arrayVisual/arrayVisual.css'>
+        <script type='module' src='./visualizer/arrayVisual/arrayVisual.js'></script>       
+        <script type='module' src='./visualizer/visualizer.js'></script>  
 
         <!-- Entry Point File -->
         <script type='module' src='./index.js'></script>
@@ -35,18 +34,20 @@
                 <!-- Pause Time Slider -->
                 <div class='slider-container'>
                     <div>Speed</div>
-                    <input type='range' min='5' max='1200' value='50' class='slider' id='pause-time-slider'>
+                    <input type='range' min='-500' max='-5' value='-100' step='1' class='slider' id='pause-time-slider'>
                 </div>
-                
+
                 <div class='separator'></div>
-    
+                
+                <!-- Generate Array Button -->
                 <button id='generate-array-button'>Generate New Array</button>
     
                 <div class='separator'></div>
                 
+                <!-- Algorithm Selection Radio Buttons -->
                 <div>
                     <div class='radio-container'>
-                        <input type='radio' id='bubble-sort-radio' value='bubbleSort' name='sorting-algorithm'/>
+                        <input type='radio' id='bubble-sort-radio' value='bubbleSort' name='sorting-algorithm' checked/>
                         <label for='bubble-sort-radio'>Bubble Sort</label>
                     </div>
 
@@ -78,16 +79,14 @@
 
                 <div class='separator'></div>
 
+                <!-- Sort Button -->
                 <button id='sort-button'>SORT</button>
-
             </div> 
             
-
-
+            <!-- Array Visuals (bars) -->
             <div id='array-visual'>
-                <div class='bar-container' id='array-bars'>array-bars</div>
-                <div class='bar-container' id='auxiliary-bars'>auxiliary-bars</div>
+                <div class='bar-container' id='array-bars'>array bars container here</div>
+                <div class='bar-container' id='auxiliary-bars'>auxiliary bars container here</div>
             </div>
-            
     </body> 
 </html>
