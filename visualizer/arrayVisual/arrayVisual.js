@@ -7,9 +7,6 @@ var auxiliaryBars = auxiliaryBarsContainer.querySelectorAll('.bar');
  * @param {number[]} array 
  */
 function render(array) {
-    
-   
-
     auxiliaryBarsContainer.innerHTML = ''; arrayBarsContainer.innerHTML = '';
     let width = 900 / array.length;
     let margin = 120 / array.length;

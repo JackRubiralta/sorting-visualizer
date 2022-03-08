@@ -275,7 +275,11 @@ const sortingAlgorithms = {
                     yield;
                     
             
-                    arrayVisual.setBarVisual(low + k, 'default');
+                    if (auxiliaryArray.length != array.length) {
+                        arrayVisual.setBarVisual(low + k, 'default');
+                    } else {
+                        arrayVisual.setBarVisual(low + k, 'finished');
+                    }
                     arrayVisual.setAuxiliaryBarVisual(low + k, 'hidden');
                 }    
             }
@@ -294,7 +298,7 @@ const sortingAlgorithms = {
 };
 
 async function visualizeAlgorithm(algorithmName) {
-    //arrayVisual.setBarRangeVisual(0, array.length, 'default');
+    arrayVisual.setBarRangeVisual(0, array.length - 1, 'default');
     let currentAlgorithm = sortingAlgorithms[algorithmName]();
 
     visualizeAlgorithm.running = true;
