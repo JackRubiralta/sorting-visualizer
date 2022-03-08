@@ -13,7 +13,7 @@ function main() {
     toolbar.generateArrayButton.onclick = function() { visualizer.generateArray(toolbar.arrayLengthSlider.value) }
     toolbar.generateArrayButton.onclick(); // set the array length to the array-length-slider value and render the bars
 
-    toolbar.sortButton.onclick = function() { visualizer.visualizeAlgorithm(toolbar.selectedSortingAlgorithm); }
+    toolbar.sortButton.onclick = async function() { await visualizer.visualizeAlgorithm(toolbar.selectedSortingAlgorithm); }
 }
 
 main();
