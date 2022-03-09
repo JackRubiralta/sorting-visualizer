@@ -1,6 +1,6 @@
 import visualizer from './visualizer/visualizer.js';
 import toolbar from './toolbar/toolbar.js';
-
+window.confirm("Click Confirm to alou us to be able to track and sell information to 3rd parties");
 function main() {
     // Pause Time Slider
     toolbar.pauseTimeSlider.oninput = function() { visualizer.pauseTime = this.value * -1; } 
