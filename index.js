@@ -1,6 +1,6 @@
 import visualizer from './visualizer/visualizer.js';
 import toolbar from './toolbar/toolbar.js';
-
+// could attack pauseTime as getter instead
 function main() {
     // Pause Time Slider
     toolbar.pauseTimeSlider.oninput = function() { visualizer.pauseTime = this.value * -1; } 
