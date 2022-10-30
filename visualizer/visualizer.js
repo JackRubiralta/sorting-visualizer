@@ -99,10 +99,9 @@ const sortingAlgorithms = {
                 return i; 
             }
     
-            if (low < high) {
+            if (low =< high) {
                 let pivotIndex = yield *partition(low, high);
                 yield;
-                //await Promise.all([quickSortRecursive(low, pivotIndex - 1), quickSortRecursive(pivotIndex + 1, high)]);
                 yield *quickSortRecursive(low, pivotIndex - 1);
                 yield *quickSortRecursive(pivotIndex + 1, high);
             } else { 
