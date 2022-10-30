@@ -104,7 +104,7 @@ const sortingAlgorithms = {
                 yield;
                 yield *quickSortRecursive(low, pivotIndex - 1);
                 yield *quickSortRecursive(pivotIndex + 1, high);
-            } else if (low != high) { 
+            } else if (low < array.length) { 
                arrayVisual.setBarVisual(low, 'finished');
             }
            
