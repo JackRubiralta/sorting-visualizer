@@ -99,13 +99,13 @@ const sortingAlgorithms = {
                 return i; 
             }
     
-            if (low =< high) {
+            if (low <= high) {
                 let pivotIndex = yield *partition(low, high);
                 yield;
                 yield *quickSortRecursive(low, pivotIndex - 1);
                 yield *quickSortRecursive(pivotIndex + 1, high);
             } else { 
-               //arrayVisual.setBarVisual(low, 'finished');
+               arrayVisual.setBarVisual(low, 'finished');
             }
            
         }
