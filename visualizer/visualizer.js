@@ -60,7 +60,7 @@ const sortingAlgorithms = {
         }
     },
     
-    * quickSort() {
+    *quickSort() {
         function* quickSortRecursive(low, high) {
             function* partition(low, high) {
                 arrayVisual.setBarVisual(low, 'pivot'); 
@@ -104,7 +104,7 @@ const sortingAlgorithms = {
                 yield;
                 yield *quickSortRecursive(low, pivotIndex - 1);
                 yield *quickSortRecursive(pivotIndex + 1, high);
-            } else if (low < array.length) { 
+            } else if (low < array.length) { // to fix error: low was a index not present in the array
                arrayVisual.setBarVisual(low, 'finished');
             }
            
