@@ -105,7 +105,9 @@ const sortingAlgorithms = {
                 //await Promise.all([quickSortRecursive(low, pivotIndex - 1), quickSortRecursive(pivotIndex + 1, high)]);
                 yield *quickSortRecursive(low, pivotIndex - 1);
                 yield *quickSortRecursive(pivotIndex + 1, high);
-            } else { arrayVisual.setBarVisual(low, 'finished'); }
+            } else { 
+               //arrayVisual.setBarVisual(low, 'finished');
+            }
            
         }
     
